@@ -1,0 +1,13 @@
+version: '3'
+services:
+  openvpn:
+    image: kylemanna/openvpn:2.4
+    ports:
+      - "1194:1194"
+    cap_add:
+      - NET_ADMIN      
+    volumes:
+      - ./conf:/etc/openvpn
+    command:
+      - ovpn_run
+      - --capath /etc/openvpn/pki/private
